@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - My Beautiful Web App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* Sticky Navbar */
+        .navbar {
+            position: -webkit-sticky; /* For Safari */
+            /* position: sticky; */
+            top: 0;
+            z-index: 1000;
+            background-color: #343a40;
+        }
+
+        /* Padding for content below the sticky navbar */
+        body {
+            padding-top: 60px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: url('images/normalHomebackground.jpeg') no-repeat center center;
+            background-size: cover;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-section h1 {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: rgb(21, 33, 99);
+        }
+        .gradient-text {
+            background-image: linear-gradient(to right, #00fbff, #7d0303); /* Gradient colors */
+            -webkit-background-clip: text; /* WebKit-specific property */
+            background-clip: text; /* Standard property */
+            color: transparent; /* Make text color transparent */
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+
+        .feature-card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #f1f3f5;
+            padding: 60px 0;
+        }
+
+        .testimonials-section blockquote {
+            font-size: 1.2em;
+            font-style: italic;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #ffffff;
+            padding: 60px 0;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2em;
+            }
+
+            .hero-section p {
+                font-size: 1.2em;
+            }
+
+            .feature-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+    <a class="navbar-brand" href="#" style="color: white;">My Web App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" style="color: white;">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#features" style="color: white;">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#testimonials" style="color: white;">Testimonials</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact" style="color: white;">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Logout.html" style="color: white;">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1 class="gradient-text">Welcome to My Website</h1>
+        <p>An interactive and stunning web application designed with cutting-edge technologies and beautiful imagery.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container text-center">
+            <h2 class="mb-5">Our Amazing Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <img class="card-img-top" src="images/technology.jpeg" alt="Feature 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Feature One</h5>
+                            <p class="card-text">A powerful feature that enhances user interaction and engagement.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <img class="card-img-top" src="images/business.jpeg" alt="Feature 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Feature Two</h5>
+                            <p class="card-text">An innovative feature that automates tasks and simplifies processes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <img class="card-img-top" src="images/design.jpeg" alt="Feature 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Feature Three</h5>
+                            <p class="card-text">A user-friendly interface that allows seamless navigation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container text-center">
+            <h2 class="mb-5">What Our Users Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">"This web app has transformed the way we work. The features are intuitive, and the interface is clean!"</p>
+                        <footer class="blockquote-footer">John Doe, <cite title="Source Title">CEO, Company X</cite></footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">"Incredible user experience! I highly recommend this app to others." </p>
+                        <footer class="blockquote-footer">Jane Smith, <cite title="Source Title">Designer, Company Y</cite></footer>
+                    </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">"A must-have for anyone who values efficiency. The design is sleek and user-friendly."</p>
+                        <footer class="blockquote-footer">Mike Johnson, <cite title="Source Title">Manager, Company Z</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container text-center">
+            <h2 class="mb-5">Get In Touch</h2>
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" id="sendMessageBtn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 My Beautiful Web App. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS & jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+    <script type="text/javascript">
+    (function () {
+    // Initialize EmailJS with the correct user ID
+    emailjs.init("H93aRl1vOioZ1NZmk");  // Replace with your actual user ID
+
+    // Attach event listener to the Send Message button
+    document.getElementById("sendMessageBtn").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Collect form data
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        // Simple validation
+        if (!name || !email || !message) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+
+        // Prepare the template parameters for EmailJS
+        const templateParams = {
+            name: name,
+            email: email,
+            message: message,
+        };
+
+        // Send the email using EmailJS
+        emailjs
+            .send("service_7sml8ut", "template_42g2wd6", templateParams)
+            .then(
+                function (response) {
+                    console.log("Success:", response);
+                    alert("Message sent successfully!");
+                    document.getElementById("contactForm").reset(); // Reset the form
+                },
+                function (error) {
+                    console.error("Error:", error);
+                    alert("Failed to send the message. Please try again later.");
+                }
+            );
+    });
+})();
+
+    </script>
+
+</body>
+</html>
