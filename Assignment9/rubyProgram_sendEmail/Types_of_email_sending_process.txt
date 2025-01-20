@@ -1,0 +1,3 @@
+net/smtp: https://github.com/ruby/net-smtp
+Mail gem: https://github.com/mikel/mail
+ActionMailer: https://guides.rubyonrails.org/action_mailer_basics.html
