@@ -1,0 +1,14 @@
+{
+  "name": "company-xml-validator",
+  "version": "1.0.0",
+  "description": "Validates XML book catalogs against an XSD schema",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "libxmljs2": "^0.35.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}

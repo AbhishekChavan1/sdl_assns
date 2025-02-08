@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <!-- Define a simple type for email with a pattern restriction -->
+    <xs:simpleType name="emailType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Define a simple type for salary with a range restriction -->
+    <xs:simpleType name="salaryType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="1000" />
+            <xs:maxInclusive value="100000" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Define a simple type for department with enumeration -->
+    <xs:simpleType name="departmentType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HR" />
+            <xs:enumeration value="Finance" />
+            <xs:enumeration value="Engineering" />
+            <xs:enumeration value="Marketing" />
+            <xs:enumeration value="Sales" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Define a complex type for address -->
+    <xs:complexType name="addressType">
+        <xs:sequence>
+            <xs:element name="street" type="xs:string" />
+            <xs:element name="city" type="xs:string" />
+            <xs:element name="state" type="xs:string" />
+            <xs:element name="zip" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Define a group for contact information -->
+    <xs:group name="contactGroup">
+        <xs:sequence>
+            <xs:element name="phone" type="xs:string" />
+            <xs:element name="email" type="emailType" />
+        </xs:sequence>
+    </xs:group>
+
+    <!-- Define a complex type for employee -->
+    <xs:complexType name="employeeType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+            <xs:element name="department" type="departmentType" />
+            <xs:element name="salary" type="salaryType" />
+            <xs:element name="address" type="addressType" />
+            <xs:group ref="contactGroup" />
+            <xs:element name="projects" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="projectName" type="xs:string" />
+                        <xs:element name="startDate" type="xs:date" />
+                        <xs:element name="endDate" type="xs:date" minOccurs="0" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:int" use="required" />
+    </xs:complexType>
+
+    <!-- Define the root element -->
+    <xs:element name="company">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="employee" type="employeeType" maxOccurs="unbounded" minOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
