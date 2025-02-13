@@ -3,36 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Secure Access Portal | NexGen Auth</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script>
-        function validateCredentials(event) {
-            event.preventDefault(); // Prevent form submission
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2A2E45;
+            --secondary-color: #5C6B73;
+            --accent-color: #C34F5A;
+            --light-bg: #F8F9FA;
+        }
+        body {
+            background: var(--primary-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            animation: gradientShift 15s ease infinite;
+            background-size: 400% 400%;
+        }
 
-            if (username === "admin" && password === "admin") {
-                window.location.href = "Home.html"; // Redirect to Home.html
-            } else {
-                alert("Invalid username or password. Try again!");
+        .auth-container {
+            padding: 0 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            top: 5%;
+            transition: transform 0.3s ease;
+        }
+
+        .auth-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .auth-header {
+            background: var(--primary-gradient);
+            color: black;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .auth-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: inherit;
+            clip-path: circle(50% at 50% 50%);
+            filter: blur(40px);
+            opacity: 0.3;
+        }
+
+        .input-group {
+            position: relative;
+            margin: 1.2rem 0;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .input-field:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
+            outline: none;
+        }
+
+        .input-label {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .input-field:focus + .input-label,
+        .input-field:not(:placeholder-shown) + .input-label {
+            top: -10px;
+            left: 0.8rem;
+            font-size: 0.8rem;
+            color: #667eea;
+            background: white;
+            padding: 0 0.3rem;
+        }
+
+        .auth-btn {
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .auth-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            animation: ripple 0.6s ease-out;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes ripple {
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
             }
         }
-    </script>
+
+        .social-auth {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-btn {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .biometric-section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin: 0rem 0;
+            text-align: center;
+        }
+
+        .biometric-btn {
+            position: relative;
+            left: 45%;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .biometric-btn:hover {
+            background: #667eea;
+            border-color: #667eea;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .error-message.active {
+            height: 20px;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .auth-container {
+                margin: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Login Page</h1>
-        <form onsubmit="validateCredentials(event)">
-            <div class="mb-3">
-                <label for="username" class="form-label">Username/Email</label>
-                <input type="text" id="username" name="username" class="form-control" required>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="auth-container">
+                    <div class="auth-header">
+                        <h2 class="mb-3"><i class="fas fa-vault me-2"></i>StudentHub</h2>
+                        <p class="mb-0">Welcome! Please authenticate to continue</p>
+                    </div>
+                    <form class="p-3 pt-0 mt-0" onsubmit="validateCredentials(event)">
+                        <div class="error-message" id="errorMessage"></div>
+
+                        <div class="input-group">
+                            <input type="text" id="username" class="input-field" placeholder=" ">
+                            <label class="input-label">Username / Email</label>
+                            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+
+                        <div class="input-group">
+                            <input type="password" id="password" class="input-field" placeholder=" ">
+                            <label class="input-label">Password</label>
+                            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+
+                        <button type="submit" class="auth-btn w-100">
+                            <span class="auth-btn-text">Authenticate</span>
+                        </button>
+
+                        <div class="text-center mt-3">
+                            <a href="#" class="text-muted small">Forgot credentials?</a>
+                        </div>
+
+                        <div class="social-auth">
+                            <button type="button" class="social-btn">
+                                <img src="https://img.icons8.com/color/24/000000/google-logo.png" alt="Google">
+                            </button>
+                            <button type="button" class="social-btn">
+                                <img src="https://img.icons8.com/ios-filled/24/000000/microsoft.png" alt="Microsoft">
+                            </button>
+                            <button type="button" class="social-btn">
+                                <img src="https://img.icons8.com/ios-glyphs/24/000000/github.png" alt="GitHub">
+                            </button>
+                        </div>
+
+                        <div class="biometric-section">
+                            <p class="text-muted mb-3">Or use biometric authentication</p>
+                            <button type="button" class="biometric-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 10v4m0 0v4m0-4h4m-4 0H8m12-6.28A11.94 11.94 0 0 1 12 20.5c-4.56 0-8.45-3.06-9.71-7.29"/>
+                                    <path d="M20 10c0-4.42-3.58-8-8-8s-8 3.58-8 8 3.58 8 8 8"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="text-center mt-4 text-white">
+                    <p>New user? <a href="#" class="text-white">Request access</a></p>
+                    <div class="small">
+                        <a href="#" class="text-white-50">Terms of Service</a> | 
+                        <a href="#" class="text-white-50">Privacy Policy</a>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-        </form>
+        </div>
     </div>
+
+    <script>
+        function validateCredentials(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const errorMessage = document.getElementById("errorMessage");
+
+            // Enhanced validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailPattern.test(username)) {
+                errorMessage.textContent = "Please enter a valid email address";
+                errorMessage.classList.add('active');
+                return;
+            }
+
+            if (password.length < 8) {
+                errorMessage.textContent = "Password must be at least 8 characters";
+                errorMessage.classList.add('active');
+                return;
+            }
+
+            // Simulated authentication
+            if (username === "rupesh.anywhere@gmail.com" && password === "Rupesh@12345") {
+                window.location.href = "Home.html";
+            } else {
+                errorMessage.textContent = "Authentication failed. Please check your credentials";
+                errorMessage.classList.add('active');
+                setTimeout(() => errorMessage.classList.remove('active'), 3000);
+            }
+        }
+
+        // Add ripple effect to auth button
+        document.querySelector('.auth-btn').addEventListener('click', function(e) {
+            let ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.width = '20px';
+            ripple.style.height = '20px';
+            ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+            ripple.style.borderRadius = '50%';
+            ripple.style.transform = 'translate(-50%, -50%)';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.left = e.offsetX + 'px';
+            ripple.style.top = e.offsetY + 'px';
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 500);
+        });
+    </script>
 </body>
 </html>
