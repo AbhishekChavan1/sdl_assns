@@ -1,0 +1,4 @@
+sudo chmod 777 -R /opt/lampp/htdocs
+
+sudo chmod -R o-wx /opt/lampp/htdocs
+

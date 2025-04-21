@@ -1,0 +1,26 @@
+CREATE DATABASE IF NOT EXISTS book_store;
+USE book_store;
+
+-- Create users table
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255)
+);
+
+-- Create books table
+CREATE TABLE IF NOT EXISTS books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255),
+    author VARCHAR(100),
+    genre VARCHAR(100),
+    price DECIMAL(10, 2),
+    image VARCHAR(255)
+);
+
+-- Insert sample books
+INSERT INTO books (title, author, genre, price, image) VALUES
+('The Great Gatsby', 'F. Scott Fitzgerald', 'Fiction', 299.99, 'gatsby.jpg'),
+('1984', 'George Orwell', 'Dystopian', 199.99, '1984.jpg'),
+('To Kill a Mockingbird', 'Harper Lee', 'Classic', 249.99, 'mockingbird.jpg');

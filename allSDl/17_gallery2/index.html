@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    .gallery-img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-title {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="gallery-title">Image Gallery</h2>
+
+    <div class="row g-4">
+      <!-- Gallery Items -->
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <img src="https://source.unsplash.com/random/300x300?fashion" class="gallery-img" alt="Gallery Image">
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <img src="https://source.unsplash.com/random/301x300?clothing" class="gallery-img" alt="Gallery Image">
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <img src="https://source.unsplash.com/random/302x300?garments" class="gallery-img" alt="Gallery Image">
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <img src="https://source.unsplash.com/random/303x300?fashionwear" class="gallery-img" alt="Gallery Image">
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <img src="https://source.unsplash.com/random/304x300?style" class="gallery-img" alt="Gallery Image">
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <img src="https://source.unsplash.com/random/305x300?trendy" class="gallery-img" alt="Gallery Image">
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <img src="https://source.unsplash.com/random/306x300?jeans" class="gallery-img" alt="Gallery Image">
+      </div>
+
+      <div class="col-sm-6 col-md-4 col-lg-3">
+        <img src="https://source.unsplash.com/random/307x300?shirts" class="gallery-img" alt="Gallery Image">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

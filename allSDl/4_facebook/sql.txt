@@ -1,0 +1,12 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS facebook_clone;
+USE facebook_clone;
+
+-- Create users table
+CREATE TABLE IF NOT EXISTS users (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Event Handlers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button, input[type="text"], input[type="submit"] {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        #hoverBtn {
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+        }
+
+        #hoverBtn:hover {
+            background-color: lightblue;
+        }
+
+        .output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Button Click Event -->
+    <h3>Button Click Event</h3>
+    <button id="clickBtn">Click Me</button>
+
+    <!-- Mouse Hover Event -->
+    <h3>Mouse Hover Event</h3>
+    <button id="hoverBtn">Hover over me</button>
+
+    <!-- Form Submit Event -->
+    <h3>Form Submit Event</h3>
+    <form id="myForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Key Press Event -->
+    <h3>Key Press Event</h3>
+    <input type="text" id="textInput" placeholder="Press any key">
+
+    <!-- Window Resize Event -->
+    <h3>Window Resize Event</h3>
+    <p>Resize the window to see the effect.</p>
+
+    <!-- Output Area -->
+    <div class="output">
+        <p id="outputText"></p>
+    </div>
+
+    <script>
+        // Button Click Event Handler
+        function handleClick() {
+            alert('Button was clicked!');
+        }
+        document.getElementById('clickBtn').addEventListener('click', handleClick);
+
+        // Mouse Hover Event Handler
+        function handleMouseEnter() {
+            this.style.backgroundColor = 'lightblue';
+        }
+
+        function handleMouseLeave() {
+            this.style.backgroundColor = '';
+        }
+        let hoverButton = document.getElementById('hoverBtn');
+        hoverButton.addEventListener('mouseenter', handleMouseEnter);
+        hoverButton.addEventListener('mouseleave', handleMouseLeave);
+
+        // Form Submit Event Handler
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent default form submission
+            let username = document.getElementById('username').value;
+            document.getElementById('outputText').textContent = `Form submitted! Username: ${username}`;
+        }
+        document.getElementById('myForm').addEventListener('submit', handleSubmit);
+
+        // Key Press Event Handler
+        function handleKeyPress(event) {
+            document.getElementById('outputText').textContent = `Key pressed: ${event.key}`;
+        }
+        document.getElementById('textInput').addEventListener('keypress', handleKeyPress);
+
+        // Window Resize Event Handler
+        function handleResize() {
+            console.log('Window resized! New width: ' + window.innerWidth);
+            document.getElementById('outputText').textContent = `Window resized! New width: ${window.innerWidth}px`;
+        }
+        window.addEventListener('resize', handleResize);
+    </script>
+
+</body>
+</html>

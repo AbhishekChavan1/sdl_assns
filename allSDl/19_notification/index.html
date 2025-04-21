@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Answer Checker with Popup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .notification.show {
+      opacity: 1;
+    }
+
+    .correct {
+      background-color: #4CAF50;
+    }
+
+    .wrong {
+      background-color: #f44336;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>What is 2 + 2?</h1>
+  <input type="text" id="answer" placeholder="Enter your answer">
+  <button onclick="checkAnswer()">Submit</button>
+
+  <!-- Notification Popup -->
+  <div id="popup" class="notification"></div>
+
+  <script>
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answer').value.trim();
+      const popup = document.getElementById('popup');
+
+      if (userAnswer === "4") {
+        popup.textContent = "✅ Your answer is correct!";
+        popup.className = "notification correct show";
+      } else {
+        popup.textContent = "❌ Your answer is wrong!";
+        popup.className = "notification wrong show";
+      }
+
+      // Hide popup after 3 seconds
+      setTimeout(() => {
+        popup.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
